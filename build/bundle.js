@@ -77,7 +77,7 @@ module.exports = require("react");
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
@@ -86,108 +86,108 @@ var FETCH_USERS = exports.FETCH_USERS = 'FETCH_USERS';
 
 //This params from redux thunk middleware, the third params its axios instance that we passed before.
 var fetchUsers = exports.fetchUsers = function fetchUsers() {
-    return function () {
-        var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch, getState, api) {
-            var responses;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-                while (1) {
-                    switch (_context.prev = _context.next) {
-                        case 0:
-                            _context.next = 2;
-                            return api.get('/users');
+  return function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch, getState, api) {
+      var responses;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return api.get('/users');
 
-                        case 2:
-                            responses = _context.sent;
+            case 2:
+              responses = _context.sent;
 
 
-                            dispatch({
-                                type: FETCH_USERS,
-                                payload: responses
-                            });
+              dispatch({
+                type: FETCH_USERS,
+                payload: responses
+              });
 
-                        case 4:
-                        case 'end':
-                            return _context.stop();
-                    }
-                }
-            }, _callee, undefined);
-        }));
+            case 4:
+            case 'end':
+              return _context.stop();
+          }
+        }
+      }, _callee, undefined);
+    }));
 
-        return function (_x, _x2, _x3) {
-            return _ref.apply(this, arguments);
-        };
-    }();
+    return function (_x, _x2, _x3) {
+      return _ref.apply(this, arguments);
+    };
+  }();
 };
 
 var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
 var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
-    return function () {
-        var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {
-            var responses;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                while (1) {
-                    switch (_context2.prev = _context2.next) {
-                        case 0:
-                            _context2.next = 2;
-                            return api.get('/current_user');
+  return function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {
+      var responses;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return api.get('/current_user');
 
-                        case 2:
-                            responses = _context2.sent;
+            case 2:
+              responses = _context2.sent;
 
 
-                            dispatch({
-                                type: FETCH_CURRENT_USER,
-                                payload: responses
-                            });
+              dispatch({
+                type: FETCH_CURRENT_USER,
+                payload: responses
+              });
 
-                        case 4:
-                        case 'end':
-                            return _context2.stop();
-                    }
-                }
-            }, _callee2, undefined);
-        }));
+            case 4:
+            case 'end':
+              return _context2.stop();
+          }
+        }
+      }, _callee2, undefined);
+    }));
 
-        return function (_x4, _x5, _x6) {
-            return _ref2.apply(this, arguments);
-        };
-    }();
+    return function (_x4, _x5, _x6) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 };
 
 var FETCH_ADMINS = exports.FETCH_ADMINS = 'FETCH_ADMINS';
 
 var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
-    return function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch, getState, api) {
-            var responses;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-                while (1) {
-                    switch (_context3.prev = _context3.next) {
-                        case 0:
-                            _context3.next = 2;
-                            return api.get('/admins');
+  return function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch, getState, api) {
+      var responses;
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return api.get('/admins');
 
-                        case 2:
-                            responses = _context3.sent;
+            case 2:
+              responses = _context3.sent;
 
-                            dispatch({
-                                type: FETCH_ADMINS,
-                                payload: responses
-                            });
+              dispatch({
+                type: FETCH_ADMINS,
+                payload: responses
+              });
 
-                        case 4:
-                        case 'end':
-                            return _context3.stop();
-                    }
-                }
-            }, _callee3, undefined);
-        }));
+            case 4:
+            case 'end':
+              return _context3.stop();
+          }
+        }
+      }, _callee3, undefined);
+    }));
 
-        return function (_x7, _x8, _x9) {
-            return _ref3.apply(this, arguments);
-        };
-    }();
+    return function (_x7, _x8, _x9) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
 };
 
 /***/ }),
@@ -222,7 +222,7 @@ module.exports = require("react-helmet");
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -251,17 +251,24 @@ var _AdminListPage = __webpack_require__(20);
 
 var _AdminListPage2 = _interopRequireDefault(_AdminListPage);
 
+var _LoginPage = __webpack_require__(22);
+
+var _LoginPage2 = _interopRequireDefault(_LoginPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = [_extends({}, _App2.default, {
-    routes: [_extends({}, _HomePage2.default, {
-        path: '/',
-        exact: true
-    }), _extends({}, _UserListPage2.default, {
-        path: '/users'
-    }), _extends({}, _AdminListPage2.default, {
-        path: '/admins'
-    }), _extends({}, _NotFoundPage2.default)]
+  routes: [_extends({}, _HomePage2.default, {
+    path: '/',
+    exact: true
+  }), _extends({}, _LoginPage2.default, {
+    path: '/login',
+    exact: true
+  }), _extends({}, _UserListPage2.default, {
+    path: '/users'
+  }), _extends({}, _AdminListPage2.default, {
+    path: '/admins'
+  }), _extends({}, _NotFoundPage2.default)]
 })];
 
 /***/ }),
@@ -291,7 +298,7 @@ var _renderer = __webpack_require__(12);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _createStore = __webpack_require__(22);
+var _createStore = __webpack_require__(24);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
@@ -304,6 +311,7 @@ var _Routes2 = _interopRequireDefault(_Routes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+
 app.use('/api', (0, _expressHttpProxy2.default)('http://react-ssr-api.herokuapp.com', {
   proxyReqOptDecorator: function proxyReqOptDecorator(opts) {
     opts.headers['x-forwarded-host'] = 'localhost:3000';
@@ -478,7 +486,7 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(0);
@@ -492,64 +500,64 @@ var _reactRedux = __webpack_require__(2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header(_ref) {
-    var auth = _ref.auth;
+  var auth = _ref.auth;
 
-    console.log("My Auth status ", auth);
-    var authButton = auth ? _react2.default.createElement(
-        'a',
-        { href: '/api/logout' },
-        'Logout'
-    ) : _react2.default.createElement(
-        'a',
-        { href: '/api/auth/google' },
-        'Login'
-    );
-    return _react2.default.createElement(
-        'nav',
-        null,
+  console.log('My Auth status ', auth);
+  var authButton = auth ? _react2.default.createElement(
+    'a',
+    { href: '/api/logout' },
+    'Logout'
+  ) : _react2.default.createElement(
+    'a',
+    { href: '/api/auth/google' },
+    'Login'
+  );
+  return _react2.default.createElement(
+    'nav',
+    null,
+    _react2.default.createElement(
+      'div',
+      { className: 'nav-wrapper' },
+      _react2.default.createElement(
+        _reactRouterDom.Link,
+        { to: '/', className: 'brand-logo', style: { paddingLeft: 15 } },
+        'React SSR'
+      ),
+      _react2.default.createElement(
+        'ul',
+        { className: 'right' },
         _react2.default.createElement(
-            'div',
-            { className: 'nav-wrapper' },
-            _react2.default.createElement(
-                _reactRouterDom.Link,
-                { to: '/', className: 'brand-logo', style: { paddingLeft: 15 } },
-                'React SSR'
-            ),
-            _react2.default.createElement(
-                'ul',
-                { className: 'right' },
-                _react2.default.createElement(
-                    'li',
-                    null,
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/users' },
-                        'Users'
-                    )
-                ),
-                _react2.default.createElement(
-                    'li',
-                    null,
-                    _react2.default.createElement(
-                        _reactRouterDom.Link,
-                        { to: '/admins' },
-                        'Admins'
-                    )
-                ),
-                _react2.default.createElement(
-                    'li',
-                    null,
-                    authButton
-                )
-            )
+          'li',
+          null,
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/users' },
+            'Users'
+          )
+        ),
+        _react2.default.createElement(
+          'li',
+          null,
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/admins' },
+            'Admins'
+          )
+        ),
+        _react2.default.createElement(
+          'li',
+          null,
+          authButton
         )
-    );
+      )
+    )
+  );
 };
 var mapStateToProps = function mapStateToProps(_ref2) {
-    var auth = _ref2.auth;
-    return {
-        auth: auth
-    };
+  var auth = _ref2.auth;
+  return {
+    auth: auth
+  };
 };
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
@@ -673,7 +681,7 @@ var UserList = function (_Component) {
         _react2.default.createElement(
           'h3',
           null,
-          'Here\'s a big list of users:'
+          'Here\'s a big list of Users:'
         ),
         _react2.default.createElement(
           'ul',
@@ -913,47 +921,177 @@ exports.default = function (ChildComponent) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
-var _axios = __webpack_require__(23);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _withFirebase = __webpack_require__(23);
+
+var _withFirebase2 = _interopRequireDefault(_withFirebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LoginPage = function (_Component) {
+  _inherits(LoginPage, _Component);
+
+  function LoginPage() {
+    _classCallCheck(this, LoginPage);
+
+    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this));
+
+    _this.state = {
+      email: '',
+      password: ''
+    };
+    return _this;
+  }
+
+  _createClass(LoginPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'onSubmit',
+    value: function onSubmit() {
+      var _state = this.state,
+          email = _state.email,
+          password = _state.password;
+
+      console.log('firebase in props: ', this.props.firebase);
+      // this.props.firebase
+      //   .doSignInWithEmailAndPassword(email, password)
+      //   .then((res) => {
+      //     // console.log('res is ', res);
+      //     this.setState({ ...INITIAL_STATE });
+      //     this.props.history.push(ROUTES.HOME);
+      //   })
+      //   .catch(error => {
+      //     this.setState({ error });
+      //   });
+
+      // event.preventDefault();
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(event) {
+      this.setState(_defineProperty({}, event.target.name, event.target.value));
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _state2 = this.state,
+          email = _state2.email,
+          password = _state2.password,
+          error = _state2.error;
+
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'form',
+          { className: 'form__stackable-form', onSubmit: this.onSubmit },
+          _react2.default.createElement('input', {
+            name: 'email',
+            value: email,
+            onChange: this.onChange,
+            type: 'text',
+            placeholder: 'Email Address'
+          }),
+          _react2.default.createElement('input', {
+            name: 'password',
+            value: password,
+            onChange: this.onChange,
+            type: 'password',
+            placeholder: 'Password'
+          }),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn__orange', disabled: isInvalid, type: 'submit' },
+            'Sign In'
+          ),
+          error && _react2.default.createElement(
+            'p',
+            null,
+            error.message
+          )
+        )
+      );
+    }
+  }]);
+
+  return LoginPage;
+}(Component);
+
+exports.default = (0, _withFirebase2.default)(LoginPage);
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Missing class properties transform.\n\n\u001b[0m \u001b[90m 22 | \u001b[39m\n \u001b[90m 23 | \u001b[39m  \u001b[90m// create user\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m  doCreateUserWithEmailAndPassword \u001b[33m=\u001b[39m (email\u001b[33m,\u001b[39m password) \u001b[33m=>\u001b[39m {\n \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 | \u001b[39m    \u001b[36mreturn\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mauth\u001b[33m.\u001b[39mcreateUserWithEmailAndPassword(email\u001b[33m,\u001b[39m password)\u001b[33m;\u001b[39m\n \u001b[90m 26 | \u001b[39m  }\u001b[33m;\u001b[39m\n \u001b[90m 27 | \u001b[39m\u001b[0m\n");
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(25);
 
 var _axios2 = _interopRequireDefault(_axios);
 
 var _redux = __webpack_require__(7);
 
-var _reduxThunk = __webpack_require__(24);
+var _reduxThunk = __webpack_require__(26);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(25);
+var _reducers = __webpack_require__(27);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (req) {
-    var axiosServerInstance = _axios2.default.create({
-        baseURL: 'http://react-ssr-api.herokuapp.com',
-        headers: { cookie: req.get('cookie') || '' }
-    });
-    return (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosServerInstance)));
+  var axiosServerInstance = _axios2.default.create({
+    baseURL: 'http://react-ssr-api.herokuapp.com',
+    headers: { cookie: req.get('cookie') || '' }
+  });
+  return (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosServerInstance)));
 };
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -965,15 +1103,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(7);
 
-var _usersReducer = __webpack_require__(26);
+var _usersReducer = __webpack_require__(28);
 
 var _usersReducer2 = _interopRequireDefault(_usersReducer);
 
-var _authReducer = __webpack_require__(27);
+var _authReducer = __webpack_require__(29);
 
 var _authReducer2 = _interopRequireDefault(_authReducer);
 
-var _adminsReducer = __webpack_require__(28);
+var _adminsReducer = __webpack_require__(30);
 
 var _adminsReducer2 = _interopRequireDefault(_adminsReducer);
 
@@ -986,7 +1124,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1011,7 +1149,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1036,7 +1174,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

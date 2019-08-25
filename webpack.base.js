@@ -6,7 +6,6 @@ module.exports = {
             {
                 test: /\.js?$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
                 options: {
                     presets: [
                         'react',
@@ -14,6 +13,7 @@ module.exports = {
                         ['env', { targets: { browsers: ['last 2 versions'] } }]
                     ]
                 },
+                exclude: /node_modules/,
             },
         ]
     }

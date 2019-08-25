@@ -7,6 +7,7 @@ import { matchRoutes } from 'react-router-config';
 import Routes from './client/Routes';
 
 const app = express();
+
 app.use(
   '/api',
   proxy('http://react-ssr-api.herokuapp.com', {
