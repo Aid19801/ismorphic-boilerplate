@@ -1,7 +1,9 @@
 import React from 'react';
 import { renderRoutes }  from 'react-router-config';
-
-import { fetchCurrentUser } from '../actions';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import { withAuthentication } from '../components/Session';
+// import { fetchCurrentUser } from '../actions';
 import Header from '../components/Header';
 
 const App = ({route})=>{
@@ -13,6 +15,9 @@ const App = ({route})=>{
     )
 }
 export default {
-    component: App,
-    loadData: ({dispatch}) => dispatch(fetchCurrentUser())
+    component: compose(
+        withAuthentication,
+        connect(null, null)
+    )(App),
+    // loadData: ({dispatch}) => dispatch(fetchCurrentUser())
 }

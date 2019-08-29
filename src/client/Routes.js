@@ -5,26 +5,33 @@ import UserListPage from './pages/UserListPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminListPage from './pages/AdminListPage';
 
+import LoginPage from './pages/LoginPage';
+
 export default [
-    {
-        ...App,
-        routes:[
-            {
-                ...HomePage,
-                path:'/',
-                exact:true
-            },
-            {
-                ...UserListPage,
-                path:'/users',
-            },
-            {
-                ...AdminListPage,
-                path:'/admins',
-            },
-            {
-                ...NotFoundPage
-            }
-        ]
-    }
-]
+  {
+    ...App,
+    routes: [
+      {
+        ...HomePage,
+        path: '/',
+        exact: true
+      },
+      {
+        ...LoginPage,
+        path: '/login',
+        exact: true
+      },
+      {
+        ...UserListPage,
+        path: '/users'
+      },
+      {
+        ...AdminListPage,
+        path: '/admins'
+      },
+      {
+        ...NotFoundPage
+      }
+    ]
+  }
+];

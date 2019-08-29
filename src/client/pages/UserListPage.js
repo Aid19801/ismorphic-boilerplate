@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-
 import { fetchUsers } from '../actions';
 
 class UserList extends Component {
@@ -29,7 +28,7 @@ class UserList extends Component {
     return (
       <div>
         {this.head()}
-        <h3>Here's a big list of users:</h3>
+        <h3>Here's a big list of Users:</h3>
         <ul>{this.renderUserList()}</ul>
       </div>
     );

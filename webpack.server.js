@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const webpackNodeExternals = require('webpack-node-externals');
+const Dotenv = require('dotenv-webpack');
 
 const config = {
     // we need to tell webpack that this bundle is for NodeJS rather than web.
@@ -15,7 +16,7 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build'),
     },
-
+    plugins: [new Dotenv()],
     externals: [webpackNodeExternals()],
 }
 
