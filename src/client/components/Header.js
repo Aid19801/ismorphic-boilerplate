@@ -1,41 +1,67 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const Header = ({ auth }) => {
-  
-  // console.log('My Auth status ', auth);
+import { compose } from 'recompose';
+import { withFirebase } from './Firebase/index';
+import { AuthUserContext } from './Session';
 
-  // const authButton = auth ? (
-  //   <a href="/api/logout">Logout</a>
-  // ) : (
-  //   <a href="/api/auth/google">Login</a>
-  // );
+const Header = ({ isAdmin, privs, firebase }) => {
+
+  // console.log('firebase is ', firebase.meQuery)
+
+
+  // if (firebase) {
+  //   if (firebase.meQuery) {
+  //     console.log('firebase.mequery ', firebase.meQuery());
+  //   }
+  // }
+
+
   return (
-    <nav>
-      <div className="nav-wrapper">
-        <Link to="/" className="brand-logo" style={{ paddingLeft: 15 }}>
-          React SSR
-        </Link>
+    <div>
+      <nav>
+        <div className="nav-wrapper">
+          <Link to="/" className="brand-logo" style={{ paddingLeft: 15 }}>
+            React SSR
+          </Link>
 
-        <ul className="right">
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-          <li>
-            <Link to="/admins">Admins</Link>
-          </li>
+          <ul className="right">
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+            <li>
+              <Link to="/admins">Admins</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
+      <AuthUserContext.Consumer>
+        {authUser => {
+          return authUser ? (
+            <li>
+              <Link to="/login">Log Out</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login">Log Out</Link>
+            </li>
+          );
+        }}
+      </AuthUserContext.Consumer>
+    </div>
   );
 };
+
 const mapStateToProps = ({ auth }) => ({
   auth
 });
-export default connect(mapStateToProps)(Header);
+
+export default compose(
+  withFirebase,
+  connect(
+    mapStateToProps,
+    null
+  )
+)(Header);

@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { renderRoutes } from 'react-router-config';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-
+import Firebase, { FirebaseContext } from './components/Firebase';
 import Routes from './Routes';
 
 const axiosClientInstance = axios.create({
@@ -26,7 +26,9 @@ const store = createStore(
 hydrate(
   <Provider store={store}>
     <BrowserRouter>
-      <div>{renderRoutes(Routes)}</div>
+      <FirebaseContext.Provider value={new Firebase()}>
+        <div>{renderRoutes(Routes)}</div>
+      </FirebaseContext.Provider>
     </BrowserRouter>
   </Provider>,
   document.querySelector('#root')
