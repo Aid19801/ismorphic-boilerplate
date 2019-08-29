@@ -15,7 +15,7 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'build'),
     },
-
+    plugins: [new Dotenv()],
     externals: [webpackNodeExternals()],
 }
 

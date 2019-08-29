@@ -298,7 +298,7 @@ var _renderer = __webpack_require__(12);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _createStore = __webpack_require__(24);
+var _createStore = __webpack_require__(27);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
@@ -502,16 +502,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Header = function Header(_ref) {
   var auth = _ref.auth;
 
-  console.log('My Auth status ', auth);
-  var authButton = auth ? _react2.default.createElement(
-    'a',
-    { href: '/api/logout' },
-    'Logout'
-  ) : _react2.default.createElement(
-    'a',
-    { href: '/api/auth/google' },
-    'Login'
-  );
+
+  // console.log('My Auth status ', auth);
+
+  // const authButton = auth ? (
+  //   <a href="/api/logout">Logout</a>
+  // ) : (
+  //   <a href="/api/auth/google">Login</a>
+  // );
   return _react2.default.createElement(
     'nav',
     null,
@@ -547,7 +545,11 @@ var Header = function Header(_ref) {
         _react2.default.createElement(
           'li',
           null,
-          authButton
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/login' },
+            'Login'
+          )
         )
       )
     )
@@ -936,8 +938,6 @@ var _withFirebase2 = _interopRequireDefault(_withFirebase);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -950,101 +950,122 @@ var LoginPage = function (_Component) {
   function LoginPage() {
     _classCallCheck(this, LoginPage);
 
-    var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this));
-
-    _this.state = {
-      email: '',
-      password: ''
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).apply(this, arguments));
   }
 
   _createClass(LoginPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {}
-  }, {
-    key: 'onSubmit',
-    value: function onSubmit() {
-      var _state = this.state,
-          email = _state.email,
-          password = _state.password;
-
-      console.log('firebase in props: ', this.props.firebase);
-      // this.props.firebase
-      //   .doSignInWithEmailAndPassword(email, password)
-      //   .then((res) => {
-      //     // console.log('res is ', res);
-      //     this.setState({ ...INITIAL_STATE });
-      //     this.props.history.push(ROUTES.HOME);
-      //   })
-      //   .catch(error => {
-      //     this.setState({ error });
-      //   });
-
-      // event.preventDefault();
-    }
-  }, {
-    key: 'onChange',
-    value: function onChange(event) {
-      this.setState(_defineProperty({}, event.target.name, event.target.value));
-    }
-  }, {
     key: 'render',
+
+
+    // componentDidMount() {
+    //   const foo = this.props.firebase.onAuthStateChanged((user) => {
+    //     if (user) return user;
+    //     if (!user) return console.log('no one signed in');
+    //   })
+    //   console.log('foo is ', foo);
+    // }
+
     value: function render() {
-      var _state2 = this.state,
-          email = _state2.email,
-          password = _state2.password,
-          error = _state2.error;
-
-
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'center-align', style: { marginTop: 200 } },
         _react2.default.createElement(
-          'form',
-          { className: 'form__stackable-form', onSubmit: this.onSubmit },
-          _react2.default.createElement('input', {
-            name: 'email',
-            value: email,
-            onChange: this.onChange,
-            type: 'text',
-            placeholder: 'Email Address'
-          }),
-          _react2.default.createElement('input', {
-            name: 'password',
-            value: password,
-            onChange: this.onChange,
-            type: 'password',
-            placeholder: 'Password'
-          }),
-          _react2.default.createElement(
-            'button',
-            { className: 'btn__orange', disabled: isInvalid, type: 'submit' },
-            'Sign In'
-          ),
-          error && _react2.default.createElement(
-            'p',
-            null,
-            error.message
-          )
+          'h3',
+          null,
+          'Login'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'This is a LOGIN PAGE'
         )
       );
     }
   }]);
 
   return LoginPage;
-}(Component);
+}(_react.Component);
 
-exports.default = (0, _withFirebase2.default)(LoginPage);
+exports.default = {
+  component: (0, _withFirebase2.default)(LoginPage)
+};
+
+// class LoginPage extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       email: '',
+//       password: ''
+//     };
+//     this.firebase = new WithFirebase();
+//   }
+
+//   componentDidMount() {
+//       const foo = this.firebase.me();
+//       console.log('foo is ', foo);
+
+//   }
+
+//   onSubmit() {
+//     const { email, password } = this.state;
+//     console.log('firebase in props: ', this.props.firebase);
+//     // this.props.firebase
+//     //   .doSignInWithEmailAndPassword(email, password)
+//     //   .then((res) => {
+//     //     // console.log('res is ', res);
+//     //     this.setState({ ...INITIAL_STATE });
+//     //     this.props.history.push(ROUTES.HOME);
+//     //   })
+//     //   .catch(error => {
+//     //     this.setState({ error });
+//     //   });
+
+//     // event.preventDefault();
+//   };
+
+//   onChange(event) {
+//     this.setState({ [event.target.name]: event.target.value });
+//   };
+
+//   render() {
+//     const { email, password, error } = this.state;
+
+//     return (
+//       <div>
+//         <form className="form__stackable-form" onSubmit={this.onSubmit}>
+//           <input
+//             name="email"
+//             value={email}
+//             onChange={this.onChange}
+//             type="text"
+//             placeholder="Email Address"
+//           />
+//           <input
+//             name="password"
+//             value={password}
+//             onChange={this.onChange}
+//             type="password"
+//             placeholder="Password"
+//           />
+//           <button className="btn__orange" disabled={isInvalid} type="submit">
+//             Sign In
+//           </button>
+
+//           {error && <p>{error.message}</p>}
+//         </form>
+//       </div>
+//     );
+//   }
+// }
+
+// export default {
+//   component: WithFirebase(LoginPage),
+// };
+
+// export default WithFirebase(LoginPage);
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: SyntaxError: Missing class properties transform.\n\n\u001b[0m \u001b[90m 22 | \u001b[39m\n \u001b[90m 23 | \u001b[39m  \u001b[90m// create user\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m  doCreateUserWithEmailAndPassword \u001b[33m=\u001b[39m (email\u001b[33m,\u001b[39m password) \u001b[33m=>\u001b[39m {\n \u001b[90m    | \u001b[39m  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 | \u001b[39m    \u001b[36mreturn\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mauth\u001b[33m.\u001b[39mcreateUserWithEmailAndPassword(email\u001b[33m,\u001b[39m password)\u001b[33m;\u001b[39m\n \u001b[90m 26 | \u001b[39m  }\u001b[33m;\u001b[39m\n \u001b[90m 27 | \u001b[39m\u001b[0m\n");
-
-/***/ }),
-/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1054,17 +1075,119 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _axios = __webpack_require__(25);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _app = __webpack_require__(24);
+
+var _app2 = _interopRequireDefault(_app);
+
+__webpack_require__(25);
+
+__webpack_require__(26);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MSG_SENDER_ID
+};
+
+var WithFirebase = function WithFirebase(Component) {
+  var DecoratedComponent = function (_Component) {
+    _inherits(DecoratedComponent, _Component);
+
+    function DecoratedComponent() {
+      _classCallCheck(this, DecoratedComponent);
+
+      var _this = _possibleConstructorReturn(this, (DecoratedComponent.__proto__ || Object.getPrototypeOf(DecoratedComponent)).call(this));
+
+      _this.state = {};
+      _app2.default.initializeApp(firebaseConfig);
+      _this.auth = _app2.default.auth();
+      // this.auth = 'firebase prop here'
+      return _this;
+    }
+
+    _createClass(DecoratedComponent, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        console.log('env var: ', process.env.REACT_APP_API_KEY);
+        this.auth.onAuthStateChanged(function (user) {
+          if (user) return console.log('user is ', user);
+          if (!user) return console.log('no one signed in');
+        });
+      }
+    }, {
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(Component, _extends({}, this.props, { firebase: this.auth }));
+      }
+    }]);
+
+    return DecoratedComponent;
+  }(Component);
+
+  return DecoratedComponent;
+};
+
+exports.default = WithFirebase;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase/app");
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase/auth");
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = require("firebase/database");
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _axios = __webpack_require__(28);
 
 var _axios2 = _interopRequireDefault(_axios);
 
 var _redux = __webpack_require__(7);
 
-var _reduxThunk = __webpack_require__(26);
+var _reduxThunk = __webpack_require__(29);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(27);
+var _reducers = __webpack_require__(30);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -1079,19 +1202,19 @@ exports.default = function (req) {
 };
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1103,15 +1226,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(7);
 
-var _usersReducer = __webpack_require__(28);
+var _usersReducer = __webpack_require__(31);
 
 var _usersReducer2 = _interopRequireDefault(_usersReducer);
 
-var _authReducer = __webpack_require__(29);
+var _authReducer = __webpack_require__(32);
 
 var _authReducer2 = _interopRequireDefault(_authReducer);
 
-var _adminsReducer = __webpack_require__(30);
+var _adminsReducer = __webpack_require__(33);
 
 var _adminsReducer2 = _interopRequireDefault(_adminsReducer);
 
@@ -1124,7 +1247,7 @@ exports.default = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1149,7 +1272,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1174,7 +1297,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

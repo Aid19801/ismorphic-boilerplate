@@ -1,58 +1,41 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+// import React, { Component } from 'react';
+// import app from 'firebase/app';
+// import 'firebase/auth';
+// import 'firebase/database';
 
-const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MSG_SENDER_ID
-};
+// const firebaseConfig = {
+//   apiKey: process.env.REACT_APP_API_KEY,
+//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//   databaseURL: process.env.REACT_APP_DATABASE_URL,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+//   messagingSenderId: process.env.REACT_APP_MSG_SENDER_ID
+// };
 
-class WithFirebase {
-  constructor() {
-    app.initializeApp(config);
-    this.auth = app.auth();
-    this.db = app.database();
-  }
+// const WithFirebase = Component => {
+//   class DecoratedComponent extends Component {
+//     constructor() {
+//       super();
+//       this.state = {};
+//       app.initializeApp(firebaseConfig);
+//       this.auth = app.auth();
+//       // this.auth = 'firebase prop here'
+//     }
 
-  // Firebase *Authentication*
+//     componentDidMount() {
+//       console.log('env var: ', process.env.REACT_APP_API_KEY)
+//       this.auth.onAuthStateChanged(user => {
+//         if (user) return console.log('user is ', user);
+//         if (!user) return console.log('no one signed in');
+//       });
+//     }
 
-  // create user
-  doCreateUserWithEmailAndPassword = (email, password) => {
-    return this.auth.createUserWithEmailAndPassword(email, password);
-  };
+//     render() {
+//       return <Component {...this.props} firebase={this.auth} />;
+//     }
+//   }
 
-  // sign-in user
-  doSignInWithEmailAndPassword = (email, password) => {
-    return this.auth.signInWithEmailAndPassword(email, password);
-  };
-  // sign-out user
-  doSignOut = () => this.auth.signOut();
+//   return DecoratedComponent;
+// };
 
-  // pw re-set
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
-  // pw update
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
-
-  // get me
-  meQuery = () => {
-    this.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log('user back: ', user);
-        return user;
-      } else {
-        return console.log('no one signed in');
-      }
-    });
-  };
-
-  // Firebase *Database*
-  user = uid => this.db.ref(`users/${uid}`);
-  users = () => this.db.ref(`users`);
-}
-
-export default WithFirebase;
+// export default WithFirebase;

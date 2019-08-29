@@ -1,6 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
+const Dotenv = require('dotenv-webpack');
 
 
 const config = {
@@ -15,6 +16,7 @@ const config = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'public'),
     },
+    plugins: [new Dotenv()]
 }
 
 module.exports = merge(baseConfig, config);
