@@ -39,12 +39,6 @@ class Firebase {
     doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
 
-    // get me
-    meQuery = async () => {
-      let user = await this.auth.onAuthStateChanged;
-      return user;
-    }
-
     // Firebase *Database*
     user = uid => this.db.ref(`users/${uid}`);
     users = () => this.db.ref(`users`);

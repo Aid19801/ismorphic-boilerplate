@@ -125,9 +125,31 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
   }();
 };
 
-var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+// export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
-var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
+// export const fetchCurrentUser = () => async (dispatch, getState, api) => {
+//   const responses = await api.get('/current_user');
+
+//   dispatch({
+//     type: FETCH_CURRENT_USER,
+//     payload: responses
+//   });
+// };
+
+var GET_UID = exports.GET_UID = 'GET_UID';
+
+var getUserUid = exports.getUserUid = function getUserUid() {
+  return function (dispatch, getState, uid) {
+    dispatch({
+      type: GET_UID,
+      payload: GET_UID
+    });
+  };
+};
+
+var FETCH_ADMINS = exports.FETCH_ADMINS = 'FETCH_ADMINS';
+
+var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
   return function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {
       var responses;
@@ -136,14 +158,13 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return api.get('/current_user');
+              return api.get('/admins');
 
             case 2:
               responses = _context2.sent;
 
-
               dispatch({
-                type: FETCH_CURRENT_USER,
+                type: FETCH_ADMINS,
                 payload: responses
               });
 
@@ -161,41 +182,6 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
   }();
 };
 
-var FETCH_ADMINS = exports.FETCH_ADMINS = 'FETCH_ADMINS';
-
-var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
-  return function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(dispatch, getState, api) {
-      var responses;
-      return regeneratorRuntime.wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              _context3.next = 2;
-              return api.get('/admins');
-
-            case 2:
-              responses = _context3.sent;
-
-              dispatch({
-                type: FETCH_ADMINS,
-                payload: responses
-              });
-
-            case 4:
-            case 'end':
-              return _context3.stop();
-          }
-        }
-      }, _callee3, undefined);
-    }));
-
-    return function (_x7, _x8, _x9) {
-      return _ref3.apply(this, arguments);
-    };
-  }();
-};
-
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
@@ -206,16 +192,42 @@ module.exports = require("react-router-dom");
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-config");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
 module.exports = require("recompose");
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.withFirebase = exports.FirebaseContext = undefined;
+
+var _context = __webpack_require__(21);
+
+var _context2 = _interopRequireDefault(_context);
+
+var _firebase = __webpack_require__(22);
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _firebase2.default;
+exports.FirebaseContext = _context2.default;
+exports.withFirebase = _context.withFirebase;
+
+/***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-config");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -243,32 +255,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.AuthUserContext = _context2.default;
 exports.withAuthentication = _withAuthentication2.default;
 exports.withAuthorization = _withAuthorization2.default;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.withFirebase = exports.FirebaseContext = undefined;
-
-var _context = __webpack_require__(21);
-
-var _context2 = _interopRequireDefault(_context);
-
-var _firebase = __webpack_require__(22);
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _firebase2.default;
-exports.FirebaseContext = _context2.default;
-exports.withFirebase = _context.withFirebase;
 
 /***/ }),
 /* 8 */
@@ -385,7 +371,7 @@ var _createStore = __webpack_require__(34);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(6);
 
 var _Routes = __webpack_require__(9);
 
@@ -468,7 +454,7 @@ var _server = __webpack_require__(17);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(6);
 
 var _reactRedux = __webpack_require__(1);
 
@@ -533,15 +519,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterConfig = __webpack_require__(4);
+var _reactRouterConfig = __webpack_require__(6);
 
-var _recompose = __webpack_require__(5);
+var _recompose = __webpack_require__(4);
 
 var _reactRedux = __webpack_require__(1);
 
-var _Session = __webpack_require__(6);
-
-var _actions = __webpack_require__(2);
+var _Session = __webpack_require__(7);
 
 var _Header = __webpack_require__(27);
 
@@ -559,12 +543,10 @@ var App = function App(_ref) {
         (0, _reactRouterConfig.renderRoutes)(route.routes)
     );
 };
+// import { fetchCurrentUser } from '../actions';
 exports.default = {
-    component: (0, _recompose.compose)(_Session.withAuthentication, (0, _reactRedux.connect)(null, null))(App),
-    loadData: function loadData(_ref2) {
-        var dispatch = _ref2.dispatch;
-        return dispatch((0, _actions.fetchCurrentUser)());
-    }
+    component: (0, _recompose.compose)(_Session.withAuthentication, (0, _reactRedux.connect)(null, null))(App)
+    // loadData: ({dispatch}) => dispatch(fetchCurrentUser())
 };
 
 /***/ }),
@@ -588,7 +570,7 @@ var _context = __webpack_require__(10);
 
 var _context2 = _interopRequireDefault(_context);
 
-var _Firebase = __webpack_require__(7);
+var _Firebase = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -703,8 +685,6 @@ __webpack_require__(25);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var config = {
@@ -741,27 +721,6 @@ var Firebase = function Firebase() {
     return _this.auth.currentUser.updatePassword(password);
   };
 
-  this.meQuery = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var user;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return _this.auth.onAuthStateChanged;
-
-          case 2:
-            user = _context.sent;
-            return _context.abrupt('return', user);
-
-          case 4:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, _this);
-  }));
-
   this.user = function (uid) {
     return _this.db.ref('users/' + uid);
   };
@@ -789,9 +748,6 @@ var Firebase = function Firebase() {
 
 
 // pw update
-
-
-// get me
 
 
 // Firebase *Database*
@@ -836,11 +792,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(3);
 
-var _recompose = __webpack_require__(5);
+var _recompose = __webpack_require__(4);
 
-var _Firebase = __webpack_require__(7);
+var _Firebase = __webpack_require__(5);
 
-var _ = __webpack_require__(6);
+var _ = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -920,11 +876,11 @@ var _reactRouterDom = __webpack_require__(3);
 
 var _reactRedux = __webpack_require__(1);
 
-var _recompose = __webpack_require__(5);
+var _recompose = __webpack_require__(4);
 
-var _index = __webpack_require__(7);
+var _index = __webpack_require__(5);
 
-var _Session = __webpack_require__(6);
+var _Session = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1025,33 +981,58 @@ exports.default = (0, _recompose.compose)(_index.withFirebase, (0, _reactRedux.c
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = __webpack_require__(1);
+
+var _recompose = __webpack_require__(4);
+
+var _actions = __webpack_require__(2);
+
+var actions = _interopRequireWildcard(_actions);
+
+var _cache = __webpack_require__(41);
+
+var _Firebase = __webpack_require__(5);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Home = function Home() {
-    return _react2.default.createElement(
-        "div",
-        { className: "center-align", style: { marginTop: 200 } },
-        _react2.default.createElement(
-            "h3",
-            null,
-            "Welcome"
-        ),
-        _react2.default.createElement(
-            "p",
-            null,
-            "This is server side rendering for react."
-        )
-    );
+var Home = function Home(_ref) {
+  var uid = _ref.uid;
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'center-align', style: { marginTop: 200 } },
+    _react2.default.createElement(
+      'h3',
+      null,
+      'Logged In Home Page'
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      'your uid is ',
+      uid
+    )
+  );
 };
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    uid: state.auth.uid
+  };
+};
+
 exports.default = {
-    component: Home
+  component: (0, _recompose.compose)(_Firebase.withFirebase, (0, _reactRedux.connect)(mapStateToProps, null))(Home)
 };
 
 /***/ }),
@@ -1380,6 +1361,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -1388,13 +1371,21 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(1);
 
-var _recompose = __webpack_require__(5);
+var _recompose = __webpack_require__(4);
 
-var _Firebase = __webpack_require__(7);
+var _actions = __webpack_require__(2);
+
+var actions = _interopRequireWildcard(_actions);
+
+var _cache = __webpack_require__(41);
+
+var _Firebase = __webpack_require__(5);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1402,46 +1393,59 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var INITIAL_STATE = {
+  email: '',
+  password: '',
+  error: null
+};
+
 var LoginPage = function (_Component) {
   _inherits(LoginPage, _Component);
 
   function LoginPage() {
-    var _this2 = this;
-
     _classCallCheck(this, LoginPage);
 
     var _this = _possibleConstructorReturn(this, (LoginPage.__proto__ || Object.getPrototypeOf(LoginPage)).call(this));
 
-    _this.componentDidMount = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var firebase;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              firebase = _this.props.firebase;
-
-              firebase.doSignInWithEmailAndPassword('thepandariot@gmail.com', '&Alpha01').then(function (res) {
-                _this.setState({ blob: res });
-              });
-
-            case 2:
-            case 'end':
-              return _context.stop();
-          }
-        }
-      }, _callee, _this2);
-    }));
-
-    _this.state = {
-      blob: null
+    _this.onChange = function (e) {
+      _this.setState(_defineProperty({}, e.target.name, e.target.value));
     };
+
+    _this.onSubmit = function (event) {
+      var _this$state = _this.state,
+          email = _this$state.email,
+          password = _this$state.password;
+      var firebase = _this.props.firebase;
+
+      firebase.doSignInWithEmailAndPassword(email, password).then(function (res) {
+        res && res.user && res.user.uid ? _this.saveUidToReduxAndCache(res.user.uid) : _this.setState({ error: 'incorrect credentials' });
+        _this.setState(_extends({}, INITIAL_STATE));
+        _this.props.history.push('/');
+      }).catch(function (err) {
+        _this.setState({ error: err.message });
+      });
+      event.preventDefault();
+    };
+
+    _this.saveUidToReduxAndCache = function (uid) {
+      _this.props.getUserUid(uid);
+      (0, _cache.saveToCache)(uid);
+    };
+
+    _this.state = _extends({}, INITIAL_STATE);
     return _this;
   }
 
   _createClass(LoginPage, [{
     key: 'render',
     value: function render() {
-      console.log('this state ', this.state.blob);
+      var _state = this.state,
+          email = _state.email,
+          password = _state.password,
+          error = _state.error;
+
+      var isInvalid = password === '' || email === '';
+
       return _react2.default.createElement(
         'div',
         { className: 'center-align', style: { marginTop: 200 } },
@@ -1451,9 +1455,32 @@ var LoginPage = function (_Component) {
           'Login'
         ),
         _react2.default.createElement(
-          'p',
-          null,
-          'This is a LOGIN PAGE'
+          'form',
+          { className: 'form__stackable-form', onSubmit: this.onSubmit },
+          _react2.default.createElement('input', {
+            name: 'email',
+            value: email,
+            onChange: this.onChange,
+            type: 'text',
+            placeholder: 'Email Address'
+          }),
+          _react2.default.createElement('input', {
+            name: 'password',
+            value: password,
+            onChange: this.onChange,
+            type: 'password',
+            placeholder: 'Password'
+          }),
+          _react2.default.createElement(
+            'button',
+            { className: 'btn__orange', disabled: isInvalid, type: 'submit' },
+            'Sign In'
+          ),
+          error && _react2.default.createElement(
+            'p',
+            null,
+            error
+          )
         )
       );
     }
@@ -1468,8 +1495,16 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    getUserUid: function getUserUid(uid) {
+      return dispatch({ type: actions.GET_UID, uid: uid });
+    }
+  };
+};
+
 exports.default = {
-  component: (0, _recompose.compose)(_Firebase.withFirebase, (0, _reactRedux.connect)(mapStateToProps))(LoginPage)
+  component: (0, _recompose.compose)(_Firebase.withFirebase, (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps))(LoginPage)
 };
 
 /***/ }),
@@ -1588,15 +1623,23 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _actions = __webpack_require__(2);
 
 exports.default = function () {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { uid: '' };
     var action = arguments[1];
 
     switch (action.type) {
-        case _actions.FETCH_CURRENT_USER:
-            return action.payload.data || false;
+        // case FETCH_CURRENT_USER: return action.payload.data || false;
+
+        case _actions.GET_UID:
+            console.log('getUid: ', action);
+            return _extends({}, state, {
+                uid: action.uid
+            });
+
         default:
             return state;
     }
@@ -1625,6 +1668,29 @@ exports.default = function () {
         default:
             return state;
     }
+};
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var saveToCache = exports.saveToCache = function saveToCache(key, val) {
+    return localStorage.setItem(key, val);
+};
+
+var removeFromCache = exports.removeFromCache = function removeFromCache(key) {
+    return localStorage.setItem(key, '');
+};
+
+var getFromCache = exports.getFromCache = function getFromCache(key) {
+    var item = localStorage.getItem(key);
+    return item;
 };
 
 /***/ })

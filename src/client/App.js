@@ -4,7 +4,7 @@ import { renderRoutes } from 'react-router-config';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { withAuthentication } from './components/Session'
-import { fetchCurrentUser } from './actions';
+// import { fetchCurrentUser } from './actions';
 
 const App = ({ route, firebase }) => {
 
@@ -31,5 +31,5 @@ export default {
     withAuthentication,
     connect(null, null)
   )(App),
-  loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
+  // loadData: ({ dispatch }) => dispatch(fetchCurrentUser()),
 };
