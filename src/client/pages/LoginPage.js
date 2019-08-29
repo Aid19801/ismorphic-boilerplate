@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import * as actions from '../actions';
-import { saveToCache } from '../../helpers/cache';
+import { removeFromCache, saveToCache } from '../../helpers/cache';
 import { withFirebase } from '../components/Firebase';
 
 const INITIAL_STATE = {
@@ -15,6 +15,10 @@ class LoginPage extends Component {
   constructor() {
     super();
     this.state = { ...INITIAL_STATE };
+  }
+
+  componentDidMount = () => {
+    removeFromCache('uid')
   }
 
   onChange = e => {
@@ -43,7 +47,7 @@ class LoginPage extends Component {
 
   saveUidToReduxAndCache = uid => {
     this.props.getUserUid(uid);
-    saveToCache(uid);
+    saveToCache('uid', uid);
   }
 
   render() {
