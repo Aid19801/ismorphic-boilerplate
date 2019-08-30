@@ -8,6 +8,8 @@ import Routes from './client/Routes';
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.use(
   '/api',
   proxy('http://react-ssr-api.herokuapp.com', {
@@ -43,6 +45,6 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(render);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Listening port 3000');
 });
